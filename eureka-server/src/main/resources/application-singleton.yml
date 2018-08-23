@@ -1,0 +1,23 @@
+server:
+  port: 6666
+
+spring:
+  application:
+    name: Eureka-Singleton
+  profiles:
+    active: singleton
+
+eureka:
+  instance:
+    hostname: localhost
+    #server从客户端上收到上次心跳检查之后，等待下次心跳检测超时时间，如果超过这个时间，判定服务失效，剔除服务列表
+    #该参数一般配合客户端心跳检测频率，一般要大于客户端发送心跳频率的时间
+    #剔除服务端，如果开启自我保护后，失效服务不会马上剔除，默认15分钟85%失效才剔除，否则保留，有可能网络延迟一些影响因素
+    lease-expiration-duration-in-seconds: 30
+  client:
+    #服务注册中心，false代表不用向服务中心注册
+    register-with-eureka: false
+    #服务中心是维护服务实例，不需要检索服务
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
