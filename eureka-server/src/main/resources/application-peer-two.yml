@@ -1,0 +1,20 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: eureka-server
+  profiles:
+    active: peer-two
+
+eureka:
+  instance:
+    #server至上次收到心跳之后，等待下次心跳超时时间，如果超过这个时间还没收到心跳，则移除这个instance
+    lease-expiration-duration-in-seconds: 30
+    hostname: peer-two
+    appname: eureka-server
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://peer-one:8001/eureka/,http://peer-three:8003/eureka/
