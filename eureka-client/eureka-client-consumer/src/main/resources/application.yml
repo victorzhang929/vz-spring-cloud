@@ -7,11 +7,10 @@ spring:
 
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 10
   client:
     fetch-registry: true
     register-with-eureka: true
-    # client间隔多长时间去拉去Server服务信息
+    #client间隔多长时间去拉去Server服务信息
     registry-fetch-interval-seconds: 5
     service-url:
       defaultZone: http://peer-one:8001/eureka/

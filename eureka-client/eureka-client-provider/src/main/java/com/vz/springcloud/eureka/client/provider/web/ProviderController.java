@@ -1,6 +1,7 @@
 package com.vz.springcloud.eureka.client.provider.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProviderController {
 
-    @GetMapping("/provider/user")
-    public String getUser() {
-        return "user";
+    @GetMapping("/provider/{user}")
+    public String getUser(@PathVariable("user") String user) {
+        return user;
     }
 }

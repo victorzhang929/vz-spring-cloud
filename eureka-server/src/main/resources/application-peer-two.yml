@@ -9,12 +9,21 @@ spring:
 
 eureka:
   instance:
+    #服务续约时间，发送心跳检测证明客户端还存活
+    lease-renewal-interval-in-seconds: 10
     #server至上次收到心跳之后，等待下次心跳超时时间，如果超过这个时间还没收到心跳，则移除这个instance
     lease-expiration-duration-in-seconds: 30
     hostname: peer-two
+    #默认情况下选用spring.application.name，若没则UNKNOWN
     appname: eureka-server
+    #是否优先使用IP作为主机名的表示
+    prefer-ip-address: false
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://peer-one:8001/eureka/,http://peer-three:8003/eureka/
+  server:
+    #自我保护机制，当网络不稳定导致在要求时间内没有获得服务心跳，启动自我保护，默认15分钟内低于85%才会剔除服务
+    #线上环境一般开启状态，开发时可以将其关闭
+    enable-self-preservation: true
