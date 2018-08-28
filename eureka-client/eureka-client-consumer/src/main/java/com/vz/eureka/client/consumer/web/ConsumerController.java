@@ -1,10 +1,10 @@
 package com.vz.eureka.client.consumer.web;
 
+import com.vz.eureka.client.consumer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author zhangwei
@@ -15,10 +15,10 @@ import org.springframework.web.client.RestTemplate;
 public class ConsumerController {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private UserService userService;
 
-    @GetMapping("/consumer/{user}")
-    public String getUserByProvider(@PathVariable("user") String user) {
-        return restTemplate.getForObject("http://EUREKA-PROVIDER/provider/{user}", String.class, user);
+    @GetMapping("/consumer/{username}")
+    public String getUserByProvider(@PathVariable("username") String username) {
+        return userService.getUser(username);
     }
 }

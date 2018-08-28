@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProviderController {
 
-    @GetMapping("/provider/{user}")
-    public String getUser(@PathVariable("user") String user) {
-        return user;
+    @GetMapping("/provider/{username}")
+    public String getUser(@PathVariable("username") String username) {
+        return username;
     }
 }
