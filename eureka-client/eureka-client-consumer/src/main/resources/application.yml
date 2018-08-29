@@ -6,7 +6,6 @@ spring:
     name: eureka-consumer
 
 eureka:
-  instance:
   client:
     fetch-registry: true
     register-with-eureka: true

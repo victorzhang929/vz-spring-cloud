@@ -9,7 +9,6 @@ server:
   port: 9000
 
 eureka:
-  instance:
   client:
     fetch-registry: true
     register-with-eureka: true

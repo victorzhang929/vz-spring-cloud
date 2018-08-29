@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: turbine
+
+server:
+  port: 3000
+management:
+  server:
+    port: 3001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+turbine:
+  app-config: eureka-consumer
+  combine-host-port: true
+  cluster-name-expression: new String("default")
