@@ -5,7 +5,6 @@ import com.vz.eureka.client.consumer.service.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class UserServiceImpl implements UserService {
         return restTemplate.getForObject("http://EUREKA-PROVIDER/provider/{username}", String.class, username);
     }
 
-    public String getUserByProviderBack(@PathVariable("username") String username) {
+    public String getUserByProviderBack(String username) {
         return username + ": error";
     }
 

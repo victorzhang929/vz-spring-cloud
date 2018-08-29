@@ -1,0 +1,39 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: client-feign
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    #client间隔多长时间去拉去Server服务信息
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://peer-one:8002/eureka/
+
+ribbon:
+  #连接超时时间
+  ConnectionTimeout: 500
+  #读取超时时间
+  ReadTimeout: 5000
+  #所有的动作都能触发重试机制
+  OkToRetryOnAllOperations: true
+  #在集群其他实例中重试次数
+  MaxAutoRetiesNextServer: 2
+  #本服务中进行重试次数
+  MaxAutoRetries: 1
+
+feign:
+  #GZIP压缩
+  compression:
+    request:
+      enabled: true
+      #压缩类型
+      mime-types: text/xml,application/xml,application/json
+      #达到最小容量进行压缩
+      min-request-size: 2048
+    response:
+      enabled: true
