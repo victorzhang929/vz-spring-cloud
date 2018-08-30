@@ -1,0 +1,17 @@
+server:
+  port: 5002
+
+spring:
+  application:
+    name: eureka-consumer
+  profiles:
+    active: singleton
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    #client间隔多长时间去拉去Server服务信息
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://localhost:5004/eureka/

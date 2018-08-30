@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: gateway-zuul
+
+server:
+  port: 5000
+
+
+zuul:
+  routes:
+    consumer-api:
+      path: /consumer/**
+      serviceId: eureka-consumer
+    provider-api:
+      path: /provider/**
+      serviceId: eureka-provider
+  #过滤服务实例，zuul默认会为每个服务实例以serviceId建立路由映射
+  ignored-services: "*"
+  #过滤路由规则
+#  ignored-patterns: /**/consumer/**
+  #所有服务前缀
+#  prefix: /provider
+  #关闭所有服务前缀
+  retryable: true
+#  strip-prefix: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5004/eureka/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8000
+ribbon:
+  ConnectionTimeout: 2000
+  ReadTimeout: 2000
