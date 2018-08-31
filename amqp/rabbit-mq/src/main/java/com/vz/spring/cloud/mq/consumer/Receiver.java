@@ -1,5 +1,7 @@
 package com.vz.spring.cloud.mq.consumer;
 
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,10 +10,10 @@ import org.springframework.stereotype.Component;
  * @email victorzhang0929@hotmail.com
  */
 @Component
-//@RabbitListener(queues = "vz")
+@RabbitListener(queues = "vz")
 public class Receiver {
 
-//    @RabbitHandler
+    @RabbitHandler
     public void process(String vz) {
         System.out.println("Receiver: " + vz);
     }
