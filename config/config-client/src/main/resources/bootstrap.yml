@@ -4,9 +4,9 @@ spring:
   cloud:
     config:
       profile: dev
-      uri: http://localhost:6000/
+      uri: http://localhost:6002/
       name: config-repository
       label: master
 
 server:
-  port: 6001
+  port: 6003
