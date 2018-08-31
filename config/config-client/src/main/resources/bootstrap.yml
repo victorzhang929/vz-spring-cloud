@@ -7,6 +7,18 @@ spring:
       uri: http://localhost:6002/
       name: config-repository
       label: master
+      #快速失败机制，优先尝试请求config地址，之后加载Spring容器
+      fail-fast: true
+      #重试机制
+      retry:
+        #初始化重试间隔
+        initial-interval: 2000
+        #下一间隔乘数，2000的话1.5则是3000
+        multiplier: 1.5
+        #最大间隔时间
+        max-interval: 4000
+        #重试次数
+        max-attempts: 5
 
 server:
   port: 6003
