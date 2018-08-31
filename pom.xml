@@ -13,6 +13,7 @@
         <module>eureka-client</module>
         <module>monitor</module>
         <module>gateway-zuul</module>
+        <module>config</module>
     </modules>
 
     <parent>

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      profile: dev
+      uri: http://localhost:6000/
+      name: config-repository
+      label: master
+
+server:
+  port: 6001
