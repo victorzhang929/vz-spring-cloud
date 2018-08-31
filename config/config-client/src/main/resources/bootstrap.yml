@@ -22,3 +22,9 @@ spring:
 
 server:
   port: 6003
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["info", "health", "refresh"]
