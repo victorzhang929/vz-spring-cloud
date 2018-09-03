@@ -9,6 +9,17 @@ spring:
           search-paths: /cloud-server
           username: victorzhang929
           password: yourpassword
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 server:
   port: 6002
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["info", "health", "refresh"]
