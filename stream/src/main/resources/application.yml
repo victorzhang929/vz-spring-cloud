@@ -9,3 +9,6 @@ spring:
       bindings:
         input:
           content-type: application/json
+
+server:
+  port: 4080
