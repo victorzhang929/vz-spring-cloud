@@ -9,6 +9,17 @@ spring:
       bindings:
         input:
           content-type: application/json
+          #消费组
+          group: vz
+          #输入通道主题名
+          destination: hik
+          consumer:
+            #消费分区
+            patitioned: true
+      #实例树
+      instance-count: 1
+      #当前索引
+      instance-index: 0
 
 server:
   port: 4080
